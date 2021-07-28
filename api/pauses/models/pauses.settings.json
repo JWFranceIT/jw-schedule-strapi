@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pauses",
+  "info": {
+    "name": "pauses",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heure": {
+      "type": "integer",
+      "required": true,
+      "default": 9,
+      "min": 0,
+      "max": 23
+    },
+    "minute": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "min": 0,
+      "max": 59
+    },
+    "Monday": {
+      "type": "boolean"
+    },
+    "Tuesday": {
+      "type": "boolean"
+    },
+    "Wednesday": {
+      "type": "boolean"
+    },
+    "Thursday": {
+      "type": "boolean"
+    },
+    "Friday": {
+      "type": "boolean"
+    },
+    "DateStart": {
+      "required": false,
+      "type": "datetime"
+    },
+    "duration": {
+      "type": "integer",
+      "min": 0,
+      "required": true,
+      "default": 30
+    },
+    "reception_zones": {
+      "collection": "reception-zone",
+      "via": "pauses",
+      "dominant": true
+    }
+  }
+}

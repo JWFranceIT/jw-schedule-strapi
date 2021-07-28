@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/reception-zones",
+      "handler": "reception-zone.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reception-zones/count",
+      "handler": "reception-zone.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/reception-zones/:id",
+      "handler": "reception-zone.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/reception-zones",
+      "handler": "reception-zone.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/reception-zones/:id",
+      "handler": "reception-zone.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/reception-zones/:id",
+      "handler": "reception-zone.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

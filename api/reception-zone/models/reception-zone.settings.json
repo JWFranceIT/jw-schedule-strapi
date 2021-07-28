@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reception_zones",
+  "info": {
+    "name": "Reception Zones",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "adresse": {
+      "type": "string",
+      "required": true
+    },
+    "entity": {
+      "type": "string",
+      "required": true
+    },
+    "start": {
+      "type": "time"
+    },
+    "end": {
+      "type": "time"
+    },
+    "pauses": {
+      "via": "reception_zones",
+      "collection": "pauses"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "providers",
+  "info": {
+    "name": "providers",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "vendor_reference": {
+      "type": "string",
+      "required": true,
+      "default": "Référence client",
+      "unique": false
+    },
+    "product_orders": {
+      "via": "provider",
+      "collection": "product-orders"
+    },
+    "time": {
+      "type": "integer",
+      "required": true,
+      "default": 60
+    },
+    "reception_zones": {
+      "collection": "reception-zone"
+    }
+  }
+}

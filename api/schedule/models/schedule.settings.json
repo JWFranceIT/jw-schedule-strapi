@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "schedules",
+  "info": {
+    "name": "Schedule",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "provider": {
+      "model": "providers"
+    },
+    "reception_zone": {
+      "model": "reception-zone"
+    },
+    "start": {
+      "type": "datetime",
+      "required": true,
+      "unique": true
+    },
+    "end": {
+      "type": "datetime",
+      "unique": true,
+      "required": true
+    },
+    "full_day": {
+      "type": "boolean",
+      "default": false
+    },
+    "product_order": {
+      "type": "string",
+      "required": true
+    },
+    "promise_date": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}

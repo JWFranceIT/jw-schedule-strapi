@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_orders",
+  "info": {
+    "name": "Product Orders",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "provider": {
+      "via": "product_orders",
+      "model": "providers"
+    },
+    "Promise_Date": {
+      "type": "datetime"
+    },
+    "entity": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
