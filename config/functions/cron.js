@@ -14,7 +14,8 @@ const moment = require("moment");
 // TODO optimize the repetion
 module.exports = {
   // Execute the task every minute
-  "*/1 * * * *": {
+
+  "*/59 * * * *": {
     task: async () => {
       // Get data from JSON file stored in data file
       const json = require("fs").readFileSync("./data/openPOs.json", "utf8");
