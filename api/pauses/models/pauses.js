@@ -1,6 +1,7 @@
 "use strict";
 const { RRule } = require("rrule");
 const moment = require("moment");
+const { tryCatch } = require("ramda");
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#lifecycle-hooks)
  * to customize this model
@@ -9,12 +10,8 @@ const moment = require("moment");
 module.exports = {
   lifecycles: {
     // Called after an entry is created
-    async afterCreate(data) {
-      moment.locale("fr");
-
-      const dtStart =
-        data.DateStart !== null ? new Date(data.DateStart) : new Date();
-      console.log(dtStart);
+    async beforeCreate(data) {
+      const dtStart = data.DateStart ? new Date(data.DateStart) : new Date();
       const rule = new RRule({
         freq: RRule.DAILY,
         byweekday: [
@@ -34,18 +31,24 @@ module.exports = {
       const pauseProvider = await strapi
         .query("providers")
         .findOne({ name: "JW PAUSE" });
-      data.reception_zones.forEach((zone) =>
+      if (!pauseProvider) {
+        throw new Error("Provider  JW PAUSE not exist");
+      }
+      if (data.reception_zones.length === 0) {
+        throw new Error("Reception zone not defined");
+      }
+      data.reception_zones.forEach((zone) => {
         rule.all().map(async (entry) => {
           await strapi.query("schedule").create({
             provider: pauseProvider.id,
             product_order: "JW PAUSE",
-            reception_zone: zone.id,
+            reception_zone: zone,
             start: moment.utc(entry).toDate(),
             end: moment.utc(entry).add(data.duration, "minutes").toDate(),
             promise_date: moment.utc().toDate(),
           });
-        })
-      );
+        });
+      });
     },
   },
 };

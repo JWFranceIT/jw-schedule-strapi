@@ -1,6 +1,14 @@
 {
   "routes": [
     {
+      "method": "POST",
+      "path": "/schedules/isExist",
+      "handler": "schedule.isExist",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/schedules",
       "handler": "schedule.find",
@@ -32,6 +40,7 @@
         "policies": []
       }
     },
+
     {
       "method": "POST",
       "path": "/schedules",
@@ -40,14 +49,7 @@
         "policies": []
       }
     },
-    {
-      "method": "POST",
-      "path": "/schedules/isExist",
-      "handler": "schedule.isExist",
-      "config": {
-        "policies": []
-      }
-    },
+
     {
       "method": "PUT",
       "path": "/schedules/:id",

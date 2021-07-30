@@ -13,20 +13,22 @@ module.exports = {
     const productOrder = await strapi
       .query("product-orders")
       .findOne({ number: product_order });
-    console.log({ productOrder });
+
     const currentProvider = wareHouseUserMatch
       ? await strapi.query("providers").findOne({ name: wareHouseUserMatch[3] })
       : await strapi.query("providers").findOne({ name: provider });
+    console.log({ wareHouseUserMatch });
     console.log({ currentProvider });
-    const currentZone = !wareHouseUserMatch
-      ? currentProvider.reception_zones.find(
-          (zone) => zone.entity === productOrder.entity
-        )
-      : await strapi.query("reception-zone").findOne({
-          name: wareHouseUserMatch[2],
-          entity: wareHouseUserMatch[1],
-        });
-
+    const currentZone =
+      !wareHouseUserMatch || wareHouseUserMatch.length === 0
+        ? currentProvider.reception_zones.find(
+            (zone) => zone.entity === productOrder.entity
+          )
+        : await strapi.query("reception-zone").findOne({
+            identification: wareHouseUserMatch[2],
+            entity: wareHouseUserMatch[1],
+          });
+    console.log("currentZone", currentZone);
     const isExist = await strapi
       .query("schedule")
       .findOne({ product_order: product_order });
@@ -43,6 +45,7 @@ module.exports = {
           promise_date: new Date(),
           time: wareHouseUserMatch[4],
           adresse: currentZone.adresse,
+          name: currentZone.name,
           JW: true,
           isExist,
         })
@@ -55,6 +58,7 @@ module.exports = {
           promise_date: productOrder.Promise_Date,
           reception_zone: currentZone.id,
           adresse: currentZone.adresse,
+          name: currentZone.name,
           statusCode: 200,
           JW: false,
           isExist,

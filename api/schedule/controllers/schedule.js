@@ -8,21 +8,23 @@ const { sanitizeEntity } = require("strapi-utils");
 module.exports = {
   isExist: async (ctx) => {
     const body = ctx.request.body;
-    // console.log({ body });
-    // const { product_order } = body.product_order;
     const { product_order } = body;
-
+    console.log({ body });
     const isExist = await strapi
       .query("schedule")
       .find({ product_order: product_order });
-    // console.log({ isExist });
 
     if (isExist.length !== 0) {
       await strapi.query("schedule").delete({ product_order: product_order });
     }
-    await strapi.services.schedule.create(body);
-    console.log(ctx.status);
-    return ctx.status;
+
+    const create = await strapi.services.schedule
+      .create(body)
+      .then((data) => data)
+      .catch((err) => err);
+    console.log({ create });
+
+    return create;
   },
   findByReceptionZone: async (ctx) => {
     const id = ctx.params.id_reception;

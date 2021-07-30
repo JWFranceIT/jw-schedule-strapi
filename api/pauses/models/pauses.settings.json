@@ -52,8 +52,8 @@
       "default": 30
     },
     "reception_zones": {
-      "collection": "reception-zone",
       "via": "pauses",
+      "collection": "reception-zone",
       "dominant": true
     }
   }

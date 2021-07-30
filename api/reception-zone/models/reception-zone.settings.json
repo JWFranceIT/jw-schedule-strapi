@@ -33,6 +33,10 @@
     "pauses": {
       "via": "reception_zones",
       "collection": "pauses"
+    },
+    "identification": {
+      "type": "integer",
+      "required": true
     }
   }
 }
