@@ -2,36 +2,33 @@ module.exports = ({ env }) => ({
   defaultConnection: "default",
   connections: {
     default: {
-      connector: "mongoose",
+      connector: "bookshelf",
       settings: {
-        uri: env("DATABASE_URI"),
+        client: "mysql",
+        host: env("DATABASE_HOST"),
+        port: env("DATABASE_PORT"),
+        database: "scheduler_dock_reception",
+        username: env("DATABASE_USERNAME"),
+        password: env("DATABASE_PASSWORD"),
+        filename: env("DATABASE_FILENAME", ".tmp/data.db"),
       },
       options: {
-        ssl: true,
+        useNullAsDefault: true,
       },
     },
   },
 });
 
-// env("MY_SQL_DB")
-// ? {
-//     defaultConnection: "default",
-//     connections: {
-//       default: {
-//         connector: "bookshelf",
-//         settings: {
-//           client: "mysql",
-//           host: "localhost",
-//           port: "3306",
-//           database: "scheduler_dock_reception",
-//           username: "gmarques",
-//           password: "Forever586",
-//           filename: env("DATABASE_FILENAME", ".tmp/data.db"),
-//         },
-//         options: {
-//           useNullAsDefault: true,
-//         },
+// ATLAS MONGODB CONNECTION
+// defaultConnection: "default",
+//   connections: {
+//     default: {
+//       connector: "mongoose",
+//       settings: {
+//         uri: env("DATABASE_URI"),
+//       },
+//       options: {
+//         ssl: true,
 //       },
 //     },
-//   }
-// :
+//   },

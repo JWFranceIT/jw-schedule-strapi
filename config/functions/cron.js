@@ -13,7 +13,7 @@ const moment = require("moment");
 
 // TODO optimize the repetion
 module.exports = {
-  // Execute the task every minute
+  // Execute the task every 59 minutes
 
   "*/59 * * * *": {
     task: async () => {
