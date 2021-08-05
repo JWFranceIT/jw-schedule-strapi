@@ -31,17 +31,3 @@ module.exports = ({ env }) => ({
     },
   },
 });
-
-// ATLAS MONGODB CONNECTION
-// defaultConnection: "default",
-//   connections: {
-//     default: {
-//       connector: "mongoose",
-//       settings: {
-//         uri: env("DATABASE_URI"),
-//       },
-//       options: {
-//         ssl: true,
-//       },
-//     },
-//   },
