@@ -59,6 +59,12 @@ module.exports = async () => {
   // Get data from JSON file stored in data file
   const json = require("fs").readFileSync("./data/openPOs.json", "utf8");
   const data = JSON.parse(json);
+  console.log(data.pos.length);
+  const zoneJson = require("fs").readFileSync(
+    "./data/reception_zone.json",
+    "utf8"
+  );
+  const zones = JSON.parse(zoneJson);
 
   const providersExisting = firstRun ? [] : await findProviders();
 
@@ -78,7 +84,7 @@ module.exports = async () => {
       vendor_reference: x.vendor_reference.trim(),
     }))
   );
-  console.log(providersToSave);
+
   // Save the vendors
   providersToSave.map(async (entry) => {
     // Use strapi query to create provider
@@ -107,6 +113,18 @@ module.exports = async () => {
         });
       });
   });
+  if (firstRun) {
+    zones.zones.map(async (zone) => {
+      await strapi.query("reception-zone").create({
+        name: zone.name,
+        adresse: zone.adresse,
+        entity: zone.entity,
+        start: zone.start,
+        end: zone.end,
+        identification: zone.identification,
+      });
+    });
+  }
   if (!firstRun) {
     // Get POS existing in DB
     const posExisting = await strapi
@@ -135,6 +153,7 @@ module.exports = async () => {
             provider.vendor_reference === po.vendor_code
           )
         );
+
         // Using strapi query to create po
         await strapi.query("product-orders").create({
           number: po.po_no,
