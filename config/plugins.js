@@ -2,7 +2,7 @@
 
 // Configuration of graphql
 module.exports = {
-  //
+  // use to definie amountLimit to 2500 return also 100
   graphql: {
     endpoint: "/graphql",
     shadowCRUD: true,
