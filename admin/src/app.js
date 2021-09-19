@@ -56,7 +56,10 @@ import history from './utils/history';
 import plugins from './plugins';
 
 const strapi = Strapi();
-
+var http = require("http");
+setInterval(function() {
+    http.get("http://jw-schedule.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
 const pluginsReducers = {};
 const pluginsToLoad = [];
 
