@@ -594,6 +594,12 @@
                 "identification": {
                   "type": "integer"
                 },
+                "providers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },

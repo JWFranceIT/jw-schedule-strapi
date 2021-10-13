@@ -611,6 +611,49 @@
           },
           "identification": {
             "type": "integer"
+          },
+          "providers": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "vendor_reference",
+                "time"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "vendor_reference": {
+                  "type": "string"
+                },
+                "product_orders": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "time": {
+                  "type": "integer"
+                },
+                "reception_zones": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -645,6 +688,12 @@
           },
           "identification": {
             "type": "integer"
+          },
+          "providers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

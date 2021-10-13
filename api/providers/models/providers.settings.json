@@ -33,6 +33,7 @@
       "default": 60
     },
     "reception_zones": {
+      "via": "providers",
       "collection": "reception-zone"
     }
   }
