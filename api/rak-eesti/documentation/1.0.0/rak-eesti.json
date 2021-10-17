@@ -1,9 +1,9 @@
 {
   "paths": {
-    "/schedules/isExist": {
-      "post": {
+    "/rak-eestis": {
+      "get": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "",
         "responses": {
           "200": {
             "description": "response",
@@ -52,77 +52,7 @@
         },
         "summary": "",
         "tags": [
-          "Schedule"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/schedules": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Schedule"
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Schedule"
+          "Rak-eesti"
         ],
         "parameters": [
           {
@@ -272,7 +202,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Schedule"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -310,7 +244,7 @@
         },
         "summary": "",
         "tags": [
-          "Schedule"
+          "Rak-eesti"
         ],
         "requestBody": {
           "description": "",
@@ -318,14 +252,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSchedule"
+                "$ref": "#/components/schemas/NewRak-eesti"
               }
             }
           }
         }
       }
     },
-    "/schedules/{id_reception}": {
+    "/rak-eestis/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -377,23 +311,12 @@
         },
         "summary": "",
         "tags": [
-          "Schedule"
+          "Rak-eesti"
         ],
-        "parameters": [
-          {
-            "name": "id_reception",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
+        "parameters": []
       }
     },
-    "/schedules/count": {
+    "/rak-eestis/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -404,8 +327,8 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "count": {
-                      "type": "integer"
+                    "foo": {
+                      "type": "string"
                     }
                   }
                 }
@@ -445,60 +368,7 @@
         },
         "summary": "",
         "tags": [
-          "Schedule"
-        ],
-        "parameters": []
-      }
-    },
-    "/schedules/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Schedule"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Schedule"
+          "Rak-eesti"
         ],
         "parameters": [
           {
@@ -522,7 +392,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Schedule"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -560,7 +434,7 @@
         },
         "summary": "",
         "tags": [
-          "Schedule"
+          "Rak-eesti"
         ],
         "requestBody": {
           "description": "",
@@ -568,7 +442,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSchedule"
+                "$ref": "#/components/schemas/NewRak-eesti"
               }
             }
           }
@@ -634,7 +508,7 @@
         },
         "summary": "",
         "tags": [
-          "Schedule"
+          "Rak-eesti"
         ],
         "parameters": [
           {
@@ -653,24 +527,23 @@
   },
   "components": {
     "schemas": {
-      "Schedule": {
+      "Rak-eesti": {
         "required": [
-          "id",
-          "product_order",
-          "promise_date",
-          "start",
-          "end"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "provider": {
+          "rak": {
             "required": [
               "id",
               "name",
-              "vendor_reference",
-              "time"
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
             ],
             "properties": {
               "id": {
@@ -679,26 +552,47 @@
               "name": {
                 "type": "string"
               },
-              "vendor_reference": {
+              "alternativeText": {
                 "type": "string"
               },
-              "product_orders": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "caption": {
+                "type": "string"
               },
-              "time": {
+              "width": {
                 "type": "integer"
               },
-              "reception_zones": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "time2": {
+              "height": {
                 "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -707,111 +601,11 @@
                 "type": "string"
               }
             }
-          },
-          "reception_zone": {
-            "required": [
-              "id",
-              "name",
-              "adresse",
-              "entity",
-              "identification"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "adresse": {
-                "type": "string"
-              },
-              "entity": {
-                "type": "string"
-              },
-              "start": {
-                "type": "string"
-              },
-              "end": {
-                "type": "string"
-              },
-              "pauses": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "identification": {
-                "type": "integer"
-              },
-              "providers": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "full_day": {
-            "type": "boolean",
-            "default": false
-          },
-          "product_order": {
-            "type": "string"
-          },
-          "promise_date": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "start": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "end": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
-      "NewSchedule": {
-        "required": [
-          "product_order",
-          "promise_date",
-          "start",
-          "end"
-        ],
+      "NewRak-eesti": {
         "properties": {
-          "provider": {
-            "type": "string"
-          },
-          "reception_zone": {
-            "type": "string"
-          },
-          "full_day": {
-            "type": "boolean",
-            "default": false
-          },
-          "product_order": {
-            "type": "string"
-          },
-          "promise_date": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "start": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "end": {
-            "type": "string",
-            "format": "date-time"
-          },
           "created_by": {
             "type": "string"
           },
@@ -822,9 +616,5 @@
       }
     }
   },
-  "tags": [
-    {
-      "name": "Schedule"
-    }
-  ]
+  "tags": []
 }

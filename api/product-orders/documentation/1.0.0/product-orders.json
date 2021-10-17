@@ -643,6 +643,9 @@
                   "type": "string"
                 }
               },
+              "time2": {
+                "type": "integer"
+              },
               "created_by": {
                 "type": "string"
               },

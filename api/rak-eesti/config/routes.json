@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/rak-eestis",
+      "handler": "rak-eesti.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rak-eestis/count",
+      "handler": "rak-eesti.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rak-eestis/:id",
+      "handler": "rak-eesti.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/rak-eestis",
+      "handler": "rak-eesti.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/rak-eestis/:id",
+      "handler": "rak-eesti.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/rak-eestis/:id",
+      "handler": "rak-eesti.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -17,26 +17,28 @@ module.exports = {
     const currentProvider = wareHouseUserMatch
       ? await strapi.query("providers").findOne({ name: wareHouseUserMatch[3] })
       : await strapi.query("providers").findOne({ name: provider });
-    console.log({ wareHouseUserMatch });
-    console.log({ currentProvider });
+
     const currentZone =
       !wareHouseUserMatch || wareHouseUserMatch.length === 0
         ? currentProvider.reception_zones.find(
-            (zone) => zone.entity === productOrder.entity
+            (zone) => zone.entity === productOrder?.entity
           )
         : await strapi.query("reception-zone").findOne({
             identification: wareHouseUserMatch[2],
             entity: wareHouseUserMatch[1],
           });
-    console.log("currentZone", currentZone);
+    
+
     const isExist = await strapi
       .query("schedule")
       .findOne({ product_order: product_order });
 
     const regex = new RegExp("^(..)(\\d)(EXW+)([0-9]+)", "g");
 
-    regex.test(provider) && currentZone
-      ? ctx.send({
+    try {
+      if (regex.test(provider) && currentZone) {
+        console.log("ICI");
+        ctx.send({
           provider: provider,
           id: currentProvider.id,
           product_order: product_order,
@@ -48,12 +50,13 @@ module.exports = {
           name: currentZone.name,
           JW: true,
           isExist,
-        })
-      : productOrder?.provider.name === provider
-      ? ctx.send({
+        });
+      }
+      if (productOrder?.provider.name === provider && currentZone) {
+        ctx.send({
           provider: productOrder.provider.name,
           id: productOrder.provider.id,
-          time: productOrder.provider.time,
+          time: productOrder.entity === "FH" ? productOrder.provider.time : productOrder.provider.time2,
           product_order: product_order,
           promise_date: productOrder.Promise_Date,
           reception_zone: currentZone.id,
@@ -62,7 +65,30 @@ module.exports = {
           statusCode: 200,
           JW: false,
           isExist,
-        })
-      : ctx.badRequest("Error credentials");
+        });
+      }
+      console.log({ provider });
+      if (
+        productOrder !== null &&
+        productOrder?.provider.name !== provider &&
+        currentZone
+      ) {
+        console.log("TITI");
+        throw "errorCredentials";
+      }
+      if (currentZone === undefined && productOrder !== null) {
+        throw "zoneUndefined";
+      }
+      if (
+        regex.test(provider) === false &&
+        currentZone === undefined &&
+        productOrder === null
+      ) {
+        console.log("TOTO");
+        throw "errorCredentials";
+      }
+    } catch (error) {
+      ctx.badRequest(error.toString());
+    }
   },
 };

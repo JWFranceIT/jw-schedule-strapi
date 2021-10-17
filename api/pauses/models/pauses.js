@@ -27,7 +27,7 @@ module.exports = {
         count: [50],
         dtstart: dtStart,
       });
-      console.log("hours", rule.byhour)
+      
       const pauseProvider = await strapi
         .query("providers")
         .findOne({ name: "JW PAUSE" });
