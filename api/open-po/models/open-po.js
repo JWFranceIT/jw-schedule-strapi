@@ -19,22 +19,31 @@ module.exports = {
       const providersExisting = await findProviders();
       // Get data from JSON file stored in data file
       const openPOsJSON = require("fs").readFileSync(
-        `./public${data.po[0].url}`,
+        `./public${data.po.url}`,
         "utf8"
       );
       const openPOs = JSON.parse(openPOsJSON);
-      console.log("openPO",openPOs.pos.length);
+      console.log("👽CLG - openPOs", openPOs.pos.length);
+
       // Get POS existing in DB
       const posExisting = await strapi
         .query("product-orders")
         .find({ _limit: -1 });
-      console.log( "existing", posExisting.length );
+
+      
+        posExisting.map(
+          (po) => (
+            
+            console.log({po})
+          )
+        )
+      
       // Using ramda to compare pos existing and new po of list
       const poToSave = ramda.difference(
         openPOs.pos.map((po) => ({ po_no: po.po_no, entity: po.entity })),
         posExisting.map((po) => ({ po_no: po.number, entity: po.entity }))
       );
-      console.log("SAVE", poToSave.length );
+
       // Save the POS
       poToSave.map(async (entry) => {
         // Get the po to save of list
@@ -46,10 +55,7 @@ module.exports = {
         currentPO.map(async (po) => {
           // Get the provider save in DB to affect his id to po
           const currentProvider = providersExisting.filter(
-            (provider) => (
-              provider.name === po.name.toUpperCase().trim(),
-              provider.vendor_reference === po.vendor_code
-            )
+            (provider) => provider.vendor_reference === po.vendor_code
           );
 
           // Using strapi query to create po
@@ -112,7 +118,7 @@ module.exports = {
       });
       await strapi.query("open-po").delete({ id: data.id });
       const file = await strapi.plugins["upload"].services.upload.fetch({
-        id: data.po[0].id,
+        id: data.po.id,
       });
       await strapi.plugins["upload"].services.upload.remove(file);
     },

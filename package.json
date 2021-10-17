@@ -11,6 +11,7 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "convert-excel-to-json": "^1.7.0",
     "knex": "0.21.18",
     "moment": "^2.29.1",
     "mysql": "^2.18.1",

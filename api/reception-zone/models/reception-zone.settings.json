@@ -39,9 +39,8 @@
       "required": true
     },
     "providers": {
-      "collection": "providers",
       "via": "reception_zones",
-      "dominant": true
+      "collection": "providers"
     }
   }
 }

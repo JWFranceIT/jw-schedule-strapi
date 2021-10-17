@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "open_pos",
+  "collectionName": "rak_eestis",
   "info": {
-    "name": "OPEN PO",
+    "name": "RAK EESTI",
     "description": ""
   },
   "options": {
@@ -12,13 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "po": {
+    "rak": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "files"
       ],
       "plugin": "upload",
       "required": false,

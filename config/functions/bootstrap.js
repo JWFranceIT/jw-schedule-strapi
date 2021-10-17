@@ -1,6 +1,7 @@
 "use strict";
 const ramda = require("ramda");
 const moment = require("moment");
+
 /**
  * An asynchronous bootstrap function that runs before
  * your application gets started.
@@ -31,19 +32,21 @@ const setDefaultPermissions = async () => {
     )
   );
 };
-//TODO
-const createProviderFirstRun = async(zones) => {
- 
-  console.log("1",zones)
-  
-  providers.providers.map(async(provider) => {
-    await strapi.query("providers")
-    .create({
-      name: provider.name,
-      vendor_reference: provider.vendor_reference,
-    })
-  })
-}
+/**
+ *
+ * @param {STRING} name
+ * Pass string of name to create a provider
+ */
+const isExist = async (name) => {
+  const alreadyExist = await strapi.query("providers").findOne({ name });
+  if (!alreadyExist) {
+    await strapi.query("providers").create({
+      name: name,
+      vendor_reference: name,
+      time: 30,
+    });
+  }
+};
 const isFirstRun = async () => {
   const pluginStore = strapi.store({
     environment: strapi.config.environment,
@@ -55,64 +58,87 @@ const isFirstRun = async () => {
   return !initHasRun;
 };
 
-// Création des zones en allant chercher le fichier data/reception_zone.json 
-const createDataFirstRun = async() => {
+module.exports = async () => {
+  const firstRun = await isFirstRun();
+  if (firstRun) {
+    await setDefaultPermissions();
+  }
+  // Récupérer les fichiers JSON
   const zonesJSON = require("fs").readFileSync(
     "./data/reception_zone.json",
     "utf8"
   );
-  const zones = JSON.parse(zonesJSON);
-  
-  const providersJSON =  require("fs").readFileSync("./data/FHProvider.json", "utf8");
-  const providers = JSON.parse(providersJSON);
+  const providersJSON = require("fs").readFileSync(
+    "./data/FHProvider.json",
+    "utf8"
+  );
+  // Parse JSON
+  const zonesToCreate = JSON.parse(zonesJSON);
+  const providersToSave = JSON.parse(providersJSON);
+  console.log("👽CLG - providersToSave", providersToSave.providers.length)
 
-  zones.zones.map(async (zone) => {
-    await strapi.query("reception-zone").create({
-      name: zone.name,
-      adresse: zone.adresse,
-      entity: zone.entity,
-      start: zone.start,
-      end: zone.end,
-      identification: zone.identification,
-    }).then(zone => {providers.providers.map(provider => { 
-      switch ("Magasin") {
-        case "x":
-          console.log("ZONE 1")
-          break;
-      
-        default:
-          console.log("default")
-          break;
-    }})});
-  });
-}
-
-
-module.exports = async () => {
-  const firstRun = await isFirstRun();
-  if (firstRun) {
-    await setDefaultPermissions();    
-    await createDataFirstRun();
-  }
- 
-  // Create user JW PAUSE
-  const isJWPAUSEExist = await strapi
-    .query("providers")
-    .findOne({ name: "JW PAUSE" });
-  if (!isJWPAUSEExist) {
-    await strapi.query("providers").create({
-      name: "JW PAUSE",
-      vendor_reference: "JW PAUSE",
-      time: 30,
+  //Vérifier si des zones existent en DB
+  const receptionZonesExisting = await strapi
+    .query("reception-zone")
+    .find({ _limit: -1 });
+  // Comparateur pour fonction ramda differenceWith
+  const cmp = (x, y) => x.name === y.name;
+  //Compare le fichier JSON parsé aux données en DB et renvoie les zones manquantes en DB
+  const diff = ramda.differenceWith(
+    cmp,
+    zonesToCreate.zones,
+    receptionZonesExisting
+  );
+  // Condition pour créer les zones manquantes
+  if (diff.length !== 0) {
+    diff.forEach((zone) => {
+      strapi.query("reception-zone").create({
+        name: zone.name,
+        entity: zone.entity,
+        adresse: zone.adresse,
+        start: zone.start,
+        end: zone.end,
+        identification: zone.identification,
+      });
     });
   }
-  // Create user EXW
-  const isEXWExist = await strapi.query("providers").findOne({ name: "EXW" });
-  if (!isEXWExist) {
-    await strapi.query("providers").create({
-      name: "EXW",
-      vendor_reference: "EXW",
-      time: 60,
+  //Récupérer les providers en DB
+  const providers = await strapi.query("providers").find({ _limit: -1 });
+  console.log("👽CLG - providers", providers.length)
+  const test = ramda.difference(providers.map(x => ({name: x.name, vendor_reference: x.vendor_reference })), providersToSave.providers.map(x => ({name: x.name, vendor_reference: x.vendor_reference })) )
+  console.log("👽CLG - test", test)
+  //Compare le fichier JSON parsé aux données en DB et renvoie les providers manquants en DB
+  const diffProviders = ramda.differenceWith(
+    cmp,
+    providersToSave.providers,
+    providers
+  );
+  // Récupération des zones créer précédemment
+  const receptionZonesCreated = await strapi
+    .query("reception-zone")
+    .find({ _limit: -1 });
+  // Condition pour créer les providers manquants en DB
+  if (diffProviders.length !== 0) {
+    diffProviders.forEach((provider) => {
+      const reception_zones = [];
+      receptionZonesCreated.map((zone) => {
+        if (!ramda.isEmpty(provider[zone.name]) && provider[zone.name]) {
+          reception_zones.push(zone.id);
+        }
+      });
+      strapi.query("providers").create({
+        name: provider.name,
+        vendor_reference: provider.vendor_reference,
+        time: provider.time,
+        time2: provider.time2,
+        reception_zones,
+      });
     });
   }
+  //Create JW PAUSE user
+  isExist("JW PAUSE");
+  //Create EXW user
+  isExist("EXW");
+  //Create CARISTE user
+  isExist("CARISTE");
 };

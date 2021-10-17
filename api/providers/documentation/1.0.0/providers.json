@@ -621,6 +621,10 @@
                 }
               }
             }
+          },
+          "time2": {
+            "type": "integer",
+            "default": 30
           }
         }
       },
@@ -653,6 +657,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "time2": {
+            "type": "integer",
+            "default": 30
           },
           "created_by": {
             "type": "string"
