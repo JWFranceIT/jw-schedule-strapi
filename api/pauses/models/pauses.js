@@ -27,7 +27,7 @@ module.exports = {
         count: [50],
         dtstart: dtStart,
       });
-
+      
       const pauseProvider = await strapi
         .query("providers")
         .findOne({ name: "JW PAUSE" });
@@ -39,12 +39,13 @@ module.exports = {
       }
       data.reception_zones.forEach((zone) => {
         rule.all().map(async (entry) => {
+          console.log({entry})
           await strapi.query("schedule").create({
             provider: pauseProvider.id,
             product_order: "JW PAUSE",
             reception_zone: zone,
-            start: moment.utc(entry).toDate(),
-            end: moment.utc(entry).add(data.duration, "minutes").toDate(),
+            start: moment(entry).isDST() ? moment.utc(entry).toDate() : moment.utc(entry).add(1, "hours").toDate(),
+            end: moment(entry).isDST() ? moment.utc(entry).add(data.duration, "minutes").toDate() : moment.utc(entry).add(1, "hour").add(data.duration, "minutes").toDate(),
             promise_date: moment.utc().toDate(),
           });
         });

@@ -2,51 +2,51 @@
   "zones": [
     {
       "name": "Zone 1",
-      "adresse": "0638 Schiller Trail",
-      "entity": "FF",
-      "start": "11:30:00.000",
-      "end": "20:30:00.000",
+      "adresse": "35 Avenue de la Ténarèze 32800 EAUZE",
+      "entity": "FH",
+      "start": "08:00:00.000",
+      "end": "16:30:00.000",
       "identification": 1
     },
     {
-      "name": "Zone 2",
-      "adresse": "970 Sauthoff Pass",
+      "name": "Magasin",
+      "adresse": "35 Avenue de la Ténarèze 32800 EAUZE",
       "entity": "FH",
-      "start": "15:30:00.000",
-      "end": "22:30:00.000",
-      "identification": 6
+      "start": "08:00:00.000",
+      "end": "16:30:00.000",
+      "identification": 2
     },
     {
-      "name": "Zone 3",
-      "adresse": "123 Pepper Wood Alley",
-      "entity": "FF",
-      "start": "09:30:00.000",
-      "end": "20:00:00.000",
-      "identification": 5
-    },
-    {
-      "name": "Zone 4",
-      "adresse": "48031 Maywood Terrace",
+      "name": "Centre bois",
+      "adresse": "35 Avenue de la Ténarèze 32800 EAUZE",
       "entity": "FH",
-      "start": "05:00:00.000",
-      "end": "16:00:00.000",
-      "identification": 1
+      "start": "08:00:00.000",
+      "end": "16:30:00.000",
+      "identification": 3
     },
     {
-      "name": "Zone 5",
-      "adresse": "2 Golf View Crossing",
+      "name": "Rampe",
+      "adresse": "12 Rue du Château du Theil 19200 USSEL",
       "entity": "FF",
-      "start": "08:30:00.000",
+      "start": "08:00:00.000",
       "end": "17:00:00.000",
       "identification": 4
     },
     {
-      "name": "Rampe",
-      "adresse": "15 Northwestern Pass",
-      "entity": "FH",
-      "start": "07:30:00.000",
-      "end": "16:30:00.000",
-      "identification": 3
+      "name": "Parc",
+      "adresse": "12 Rue du Château du Theil 19200 USSEL",
+      "entity": "FF",
+      "start": "08:00:00.000",
+      "end": "17:00:00.000",
+      "identification": 5
+    },
+    {
+      "name": "Froidefond",
+      "adresse": "ZAC de la Gare 19270 USSAC",
+      "entity": "FF",
+      "start": "08:00:00.000",
+      "end": "17:00:00.000",
+      "identification": 6
     }
   ]
 }

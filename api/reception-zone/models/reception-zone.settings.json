@@ -37,6 +37,10 @@
     "identification": {
       "type": "integer",
       "required": true
+    },
+    "providers": {
+      "via": "reception_zones",
+      "collection": "providers"
     }
   }
 }

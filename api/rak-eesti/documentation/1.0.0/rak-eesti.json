@@ -1,18 +1,19 @@
 {
   "paths": {
-    "/pauses": {
+    "/rak-eestis": {
       "get": {
         "deprecated": false,
-        "description": "Find all the pauses's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve pauses document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Pauses"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -51,7 +52,7 @@
         },
         "summary": "",
         "tags": [
-          "Pauses"
+          "Rak-eesti"
         ],
         "parameters": [
           {
@@ -194,79 +195,16 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new pauses record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve pauses document(s)",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Pauses"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Pauses"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPauses"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/pauses/count": {
-      "get": {
-        "deprecated": false,
-        "description": "Retrieve the numver of pauses documents",
-        "responses": {
-          "200": {
-            "description": "Retrieve pauses document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "count": {
-                      "type": "integer"
+                    "foo": {
+                      "type": "string"
                     }
                   }
                 }
@@ -306,22 +244,36 @@
         },
         "summary": "",
         "tags": [
-          "Pauses"
+          "Rak-eesti"
         ],
-        "parameters": []
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewRak-eesti"
+              }
+            }
+          }
+        }
       }
     },
-    "/pauses/{id}": {
+    "/rak-eestis/count": {
       "get": {
         "deprecated": false,
-        "description": "Find one pauses record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve pauses document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Pauses"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -359,7 +311,64 @@
         },
         "summary": "",
         "tags": [
-          "Pauses"
+          "Rak-eesti"
+        ],
+        "parameters": []
+      }
+    },
+    "/rak-eestis/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Rak-eesti"
         ],
         "parameters": [
           {
@@ -376,14 +385,18 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single pauses record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve pauses document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Pauses"
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -421,7 +434,7 @@
         },
         "summary": "",
         "tags": [
-          "Pauses"
+          "Rak-eesti"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +442,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPauses"
+                "$ref": "#/components/schemas/NewRak-eesti"
               }
             }
           }
@@ -449,10 +462,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single pauses record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single pauses based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +508,7 @@
         },
         "summary": "",
         "tags": [
-          "Pauses"
+          "Rak-eesti"
         ],
         "parameters": [
           {
@@ -514,147 +527,85 @@
   },
   "components": {
     "schemas": {
-      "Pauses": {
+      "Rak-eesti": {
         "required": [
-          "id",
-          "heure",
-          "minute",
-          "duration"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "heure": {
-            "type": "integer",
-            "default": 9
-          },
-          "minute": {
-            "type": "integer",
-            "default": 0
-          },
-          "Monday": {
-            "type": "boolean"
-          },
-          "Tuesday": {
-            "type": "boolean"
-          },
-          "Wednesday": {
-            "type": "boolean"
-          },
-          "Thursday": {
-            "type": "boolean"
-          },
-          "Friday": {
-            "type": "boolean"
-          },
-          "DateStart": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "duration": {
-            "type": "integer",
-            "default": 30
-          },
-          "reception_zones": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "name",
-                "adresse",
-                "entity",
-                "identification"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "adresse": {
-                  "type": "string"
-                },
-                "entity": {
-                  "type": "string"
-                },
-                "start": {
-                  "type": "string"
-                },
-                "end": {
-                  "type": "string"
-                },
-                "pauses": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "identification": {
-                  "type": "integer"
-                },
-                "providers": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
+          "rak": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           }
         }
       },
-      "NewPauses": {
-        "required": [
-          "heure",
-          "minute",
-          "duration"
-        ],
+      "NewRak-eesti": {
         "properties": {
-          "heure": {
-            "type": "integer",
-            "default": 9
-          },
-          "minute": {
-            "type": "integer",
-            "default": 0
-          },
-          "Monday": {
-            "type": "boolean"
-          },
-          "Tuesday": {
-            "type": "boolean"
-          },
-          "Wednesday": {
-            "type": "boolean"
-          },
-          "Thursday": {
-            "type": "boolean"
-          },
-          "Friday": {
-            "type": "boolean"
-          },
-          "DateStart": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "duration": {
-            "type": "integer",
-            "default": 30
-          },
-          "reception_zones": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "created_by": {
             "type": "string"
           },
@@ -665,9 +616,5 @@
       }
     }
   },
-  "tags": [
-    {
-      "name": "Pauses"
-    }
-  ]
+  "tags": []
 }

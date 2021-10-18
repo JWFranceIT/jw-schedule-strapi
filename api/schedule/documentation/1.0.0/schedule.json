@@ -697,6 +697,9 @@
                   "type": "string"
                 }
               },
+              "time2": {
+                "type": "integer"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -740,6 +743,12 @@
               },
               "identification": {
                 "type": "integer"
+              },
+              "providers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"
