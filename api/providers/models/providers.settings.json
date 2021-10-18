@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "providers",
   "info": {
-    "name": "providers",
+    "name": "Fournisseur",
     "description": ""
   },
   "options": {
