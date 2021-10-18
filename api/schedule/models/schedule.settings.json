@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "schedules",
   "info": {
-    "name": "Schedule",
+    "name": "Planning",
     "description": ""
   },
   "options": {
