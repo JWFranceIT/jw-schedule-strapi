@@ -21,7 +21,7 @@ module.exports = {
           data.Thursday ? RRule.TH : "",
           data.Friday ? RRule.FR : "",
         ],
-        byhour: [moment.parseZone(data.heure, "HH").utc().hours()],
+        byhour: [moment(data.heure, "HH").utc().hours()],
         byminute: [data.minute],
         bysecond: [0],
         count: [50],
