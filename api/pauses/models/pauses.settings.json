@@ -55,6 +55,10 @@
       "via": "pauses",
       "collection": "reception-zone",
       "dominant": true
+    },
+    "recurrence": {
+      "type": "integer",
+      "default": 3
     }
   }
 }

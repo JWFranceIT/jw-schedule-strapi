@@ -9,6 +9,7 @@ module.exports = {
   lifecycles: {
     // Called before an entry is created
     beforeCreate(data) {
+      console.log("👽CLG - data", data)
       data.start = new Date(data.start);
       data.end = new Date(data.end);
       data.promise_date = new Date(data.promise_date);

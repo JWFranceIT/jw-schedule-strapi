@@ -608,6 +608,10 @@
                 }
               }
             }
+          },
+          "recurrence": {
+            "type": "integer",
+            "default": 3
           }
         }
       },
@@ -654,6 +658,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "recurrence": {
+            "type": "integer",
+            "default": 3
           },
           "created_by": {
             "type": "string"
