@@ -39,7 +39,7 @@ module.exports = {
       }
       data.reception_zones.forEach((zone) => {
         rule.all().map(async (entry) => {
-          console.log({ entry });
+          console.log({ "entry":entry, "start": moment(entry).utc().toDate()  });
           await strapi.query("schedule").create({
             provider: pauseProvider.id,
             product_order: "JW PAUSE",
