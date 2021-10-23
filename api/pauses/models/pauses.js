@@ -11,6 +11,7 @@ module.exports = {
   lifecycles: {
     // Called after an entry is created
     async beforeCreate(data) {
+      console.log("first", moment(data.horaire,"hh:mm").format("mm"))
       const dtStart = data.DateStart ? new Date(data.DateStart) : new Date();
       const rule = new RRule({
         freq: RRule.DAILY,
@@ -21,10 +22,10 @@ module.exports = {
           data.Thursday ? RRule.TH : "",
           data.Friday ? RRule.FR : "",
         ],
-        byhour: [moment(data.heure, "HH").utc().format("HH")],
-        byminute: [data.minute],
+        byhour: [moment(data.horaire, "hh").utc().format("hh")],
+        byminute: [moment(data.horaire, "hh:mm").utc().format("mm")],
         bysecond: [0],
-        count: [50],
+        count: [5],
         dtstart: dtStart,
       });
 
@@ -39,7 +40,7 @@ module.exports = {
       }
       data.reception_zones.forEach((zone) => {
         rule.all().map(async (entry) => {
-          console.log({ entry });
+          console.log({ "entry":entry, "start": moment(entry).utc().toDate()  });
           await strapi.query("schedule").create({
             provider: pauseProvider.id,
             product_order: "JW PAUSE",
@@ -53,7 +54,9 @@ module.exports = {
                   .add(1, "hour")
                   .add(data.duration, "minutes")
                   .toDate(),
-            promise_date: moment().toDate(),
+            // start: moment(entry).utc().toDate(),
+            // end: moment(entry).utc().add(data.duration, 'minutes').toDate(),
+            promise_date: moment().utc().toDate(),
           });
         });
       });

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "10/23/2021 12:27:20 AM"
+    "x-generation-date": "10/23/2021 11:25:11 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6203,21 +6203,11 @@
       "Pauses": {
         "required": [
           "id",
-          "heure",
-          "minute",
           "duration"
         ],
         "properties": {
           "id": {
             "type": "string"
-          },
-          "heure": {
-            "type": "integer",
-            "default": 9
-          },
-          "minute": {
-            "type": "integer",
-            "default": 0
           },
           "Monday": {
             "type": "boolean"
@@ -6298,24 +6288,18 @@
           "recurrence": {
             "type": "integer",
             "default": 3
+          },
+          "horaire": {
+            "type": "string",
+            "default": "09:00:00"
           }
         }
       },
       "NewPauses": {
         "required": [
-          "heure",
-          "minute",
           "duration"
         ],
         "properties": {
-          "heure": {
-            "type": "integer",
-            "default": 9
-          },
-          "minute": {
-            "type": "integer",
-            "default": 0
-          },
           "Monday": {
             "type": "boolean"
           },
@@ -6348,6 +6332,10 @@
           "recurrence": {
             "type": "integer",
             "default": 3
+          },
+          "horaire": {
+            "type": "string",
+            "default": "09:00:00"
           },
           "created_by": {
             "type": "string"
@@ -6724,19 +6712,11 @@
             "items": {
               "required": [
                 "id",
-                "heure",
-                "minute",
                 "duration"
               ],
               "properties": {
                 "id": {
                   "type": "string"
-                },
-                "heure": {
-                  "type": "integer"
-                },
-                "minute": {
-                  "type": "integer"
                 },
                 "Monday": {
                   "type": "boolean"
@@ -6767,6 +6747,9 @@
                 },
                 "recurrence": {
                   "type": "integer"
+                },
+                "horaire": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"

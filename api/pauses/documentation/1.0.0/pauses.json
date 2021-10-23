@@ -517,21 +517,11 @@
       "Pauses": {
         "required": [
           "id",
-          "heure",
-          "minute",
           "duration"
         ],
         "properties": {
           "id": {
             "type": "string"
-          },
-          "heure": {
-            "type": "integer",
-            "default": 9
-          },
-          "minute": {
-            "type": "integer",
-            "default": 0
           },
           "Monday": {
             "type": "boolean"
@@ -612,24 +602,18 @@
           "recurrence": {
             "type": "integer",
             "default": 3
+          },
+          "horaire": {
+            "type": "string",
+            "default": "09:00:00"
           }
         }
       },
       "NewPauses": {
         "required": [
-          "heure",
-          "minute",
           "duration"
         ],
         "properties": {
-          "heure": {
-            "type": "integer",
-            "default": 9
-          },
-          "minute": {
-            "type": "integer",
-            "default": 0
-          },
           "Monday": {
             "type": "boolean"
           },
@@ -662,6 +646,10 @@
           "recurrence": {
             "type": "integer",
             "default": 3
+          },
+          "horaire": {
+            "type": "string",
+            "default": "09:00:00"
           },
           "created_by": {
             "type": "string"

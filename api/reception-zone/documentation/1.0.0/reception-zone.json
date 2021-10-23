@@ -559,19 +559,11 @@
             "items": {
               "required": [
                 "id",
-                "heure",
-                "minute",
                 "duration"
               ],
               "properties": {
                 "id": {
                   "type": "string"
-                },
-                "heure": {
-                  "type": "integer"
-                },
-                "minute": {
-                  "type": "integer"
                 },
                 "Monday": {
                   "type": "boolean"
@@ -602,6 +594,9 @@
                 },
                 "recurrence": {
                   "type": "integer"
+                },
+                "horaire": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
