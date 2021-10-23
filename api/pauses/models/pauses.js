@@ -44,16 +44,16 @@ module.exports = {
             provider: pauseProvider.id,
             product_order: "JW PAUSE",
             reception_zone: zone,
-            start: moment(entry).isDST()
-              ? moment(entry).toDate()
-              : moment(entry).add(1, "hours").toDate(),
-            end: moment(entry).isDST()
-              ? moment(entry).add(data.duration, "minutes").toDate()
-              : moment(entry)
+            start: moment(entry).utc().isDST()
+              ? moment(entry).utc().toDate()
+              : moment(entry).utc().add(1, "hours").toDate(),
+            end: moment(entry).utc().isDST()
+              ? moment(entry).utc().add(data.duration, "minutes").toDate()
+              : moment(entry).utc()
                   .add(1, "hour")
                   .add(data.duration, "minutes")
                   .toDate(),
-            promise_date: moment().toDate(),
+            promise_date: moment().utc().toDate(),
           });
         });
       });
