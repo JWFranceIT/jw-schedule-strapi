@@ -11,6 +11,7 @@ module.exports = {
   lifecycles: {
     // Called after an entry is created
     async beforeCreate(data) {
+      console.log("first", moment(data.horaire,"hh:mm").format("mm"))
       const dtStart = data.DateStart ? new Date(data.DateStart) : new Date();
       const rule = new RRule({
         freq: RRule.DAILY,
@@ -21,10 +22,10 @@ module.exports = {
           data.Thursday ? RRule.TH : "",
           data.Friday ? RRule.FR : "",
         ],
-        byhour: [moment(data.heure, "HH").utc().format("HH")],
-        byminute: [data.minute],
+        byhour: [moment(data.horaire, "hh").utc().format("hh")],
+        byminute: [moment(data.horaire, "hh:mm").utc().format("mm")],
         bysecond: [0],
-        count: [50],
+        count: [5],
         dtstart: dtStart,
       });
 
@@ -44,15 +45,17 @@ module.exports = {
             provider: pauseProvider.id,
             product_order: "JW PAUSE",
             reception_zone: zone,
-            start: moment(entry).utc().isDST()
-              ? moment(entry).utc().toDate()
-              : moment(entry).utc().add(1, "hours").toDate(),
-            end: moment(entry).utc().isDST()
-              ? moment(entry).utc().add(data.duration, "minutes").toDate()
-              : moment(entry).utc()
+            start: moment(entry).isDST()
+              ? moment(entry).toDate()
+              : moment(entry).add(1, "hours").toDate(),
+            end: moment(entry).isDST()
+              ? moment(entry).add(data.duration, "minutes").toDate()
+              : moment(entry)
                   .add(1, "hour")
                   .add(data.duration, "minutes")
                   .toDate(),
+            // start: moment(entry).utc().toDate(),
+            // end: moment(entry).utc().add(data.duration, 'minutes').toDate(),
             promise_date: moment().utc().toDate(),
           });
         });
@@ -60,3 +63,4 @@ module.exports = {
     },
   },
 };
+
