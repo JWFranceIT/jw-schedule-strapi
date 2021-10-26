@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "providers",
   "info": {
-    "name": "providers",
+    "name": "Fournisseurs",
     "description": ""
   },
   "options": {
@@ -24,6 +24,7 @@
       "unique": true
     },
     "product_orders": {
+      "columnName": "po",
       "via": "provider",
       "collection": "product-orders"
     },

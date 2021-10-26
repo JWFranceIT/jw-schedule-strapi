@@ -9,7 +9,7 @@ module.exports = {
   isExist: async (ctx) => {
     const body = ctx.request.body;
     const { product_order } = body;
-    console.log({ body });
+
     const isExist = await strapi
       .query("schedule")
       .find({ product_order: product_order });

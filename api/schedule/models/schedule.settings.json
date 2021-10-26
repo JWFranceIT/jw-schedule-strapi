@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "schedules",
   "info": {
-    "name": "Schedule",
+    "name": "Planning",
     "description": ""
   },
   "options": {
@@ -16,6 +16,7 @@
       "model": "providers"
     },
     "reception_zone": {
+      "columnName": "Zone de réception",
       "model": "reception-zone"
     },
     "full_day": {
