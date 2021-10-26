@@ -24,10 +24,10 @@ module.exports = {
         byhour: [moment(data.horaire, "hh").utc().format("hh")],
         byminute: [moment(data.horaire, "hh:mm").utc().format("mm")],
         bysecond: [0],
-        count: [5],
+        count: [date.recurence],
         dtstart: dtStart,
       });
-      console.log("hours", rule.byhour)
+      
       const pauseProvider = await strapi
         .query("providers")
         .findOne({ name: "JW PAUSE" });

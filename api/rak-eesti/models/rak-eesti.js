@@ -29,7 +29,6 @@ module.exports = {
           ["number", "city", "loadDate", "promiseDate", "unloadDate"],
           result
         );
-          console.log({result})
         if (sorted.number) {
           const getRak = await strapi
             .query("product-orders")
@@ -52,7 +51,6 @@ module.exports = {
               });
             }
           }else{
-            console.log({getRak})
             await strapi.query("product-orders").update({id: getRak.id}, {
               number: sorted.number,
                 entity: sorted.city === "Eauze" ? "FH" : "FF",

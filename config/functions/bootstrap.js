@@ -75,7 +75,6 @@ module.exports = async () => {
   // Parse JSON
   const zonesToCreate = JSON.parse(zonesJSON);
   const providersToSave = JSON.parse(providersJSON);
-  console.log("👽CLG - providersToSave", providersToSave.providers.length)
 
   //Vérifier si des zones existent en DB
   const receptionZonesExisting = await strapi
@@ -104,7 +103,7 @@ module.exports = async () => {
   }
   //Récupérer les providers en DB
   const providers = await strapi.query("providers").find({ _limit: -1 });
-  console.log("👽CLG - providers", providers.length)
+  
   const test = ramda.difference(providers.map(x => ({name: x.name, vendor_reference: x.vendor_reference })), providersToSave.providers.map(x => ({name: x.name, vendor_reference: x.vendor_reference })) )
   console.log("👽CLG - test", test)
   //Compare le fichier JSON parsé aux données en DB et renvoie les providers manquants en DB
@@ -127,7 +126,7 @@ module.exports = async () => {
         }
       });
       strapi.query("providers").create({
-        name: provider.name,
+        name: provider.name.toUpperCase().trim(),
         vendor_reference: provider.vendor_reference,
         time: provider.time,
         time2: provider.time2,
