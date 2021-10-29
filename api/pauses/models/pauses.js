@@ -25,7 +25,7 @@ module.exports = {
         byhour: [moment(data.horaire, "hh").utc().format("hh")],
         byminute: [moment(data.horaire, "hh:mm").utc().format("mm")],
         bysecond: [0],
-        count: [5],
+        count: [data.recurrence]
         dtstart: dtStart,
       });
 
