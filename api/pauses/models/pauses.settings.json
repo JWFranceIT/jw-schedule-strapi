@@ -49,6 +49,14 @@
     "horaire": {
       "type": "time",
       "default": "09:00:00"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "full_day": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

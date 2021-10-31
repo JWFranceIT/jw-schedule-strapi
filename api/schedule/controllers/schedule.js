@@ -9,7 +9,7 @@ module.exports = {
   isExist: async (ctx) => {
     const body = ctx.request.body;
     const { product_order } = body;
-    console.log({ body });
+
     const isExist = await strapi
       .query("schedule")
       .find({ product_order: product_order });
@@ -22,14 +22,11 @@ module.exports = {
       .create(body)
       .then((data) => data)
       .catch((err) => err);
-    console.log({ create });
 
     return create;
   },
   findByReceptionZone: async (ctx) => {
     const id = ctx.params.id_reception;
-
     const schedulesByZone = await strapi.query("schedule").find();
-    console.log(schedulesByZone);
   },
 };

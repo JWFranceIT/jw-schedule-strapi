@@ -559,7 +559,8 @@
             "items": {
               "required": [
                 "id",
-                "duration"
+                "duration",
+                "title"
               ],
               "properties": {
                 "id": {
@@ -597,6 +598,12 @@
                 },
                 "horaire": {
                   "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "full_day": {
+                  "type": "boolean"
                 },
                 "created_by": {
                   "type": "string"

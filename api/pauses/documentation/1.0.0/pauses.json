@@ -517,7 +517,8 @@
       "Pauses": {
         "required": [
           "id",
-          "duration"
+          "duration",
+          "title"
         ],
         "properties": {
           "id": {
@@ -606,12 +607,20 @@
           "horaire": {
             "type": "string",
             "default": "09:00:00"
+          },
+          "title": {
+            "type": "string"
+          },
+          "full_day": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
       "NewPauses": {
         "required": [
-          "duration"
+          "duration",
+          "title"
         ],
         "properties": {
           "Monday": {
@@ -650,6 +659,13 @@
           "horaire": {
             "type": "string",
             "default": "09:00:00"
+          },
+          "title": {
+            "type": "string"
+          },
+          "full_day": {
+            "type": "boolean",
+            "default": false
           },
           "created_by": {
             "type": "string"

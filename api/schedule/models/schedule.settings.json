@@ -18,10 +18,6 @@
     "reception_zone": {
       "model": "reception-zone"
     },
-    "full_day": {
-      "type": "boolean",
-      "default": false
-    },
     "product_order": {
       "type": "string",
       "required": true
@@ -37,6 +33,10 @@
     "end": {
       "type": "datetime",
       "required": true
+    },
+    "full_day": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

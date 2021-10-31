@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "10/23/2021 11:25:11 AM"
+    "x-generation-date": "10/31/2021 10:39:56 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6203,7 +6203,8 @@
       "Pauses": {
         "required": [
           "id",
-          "duration"
+          "duration",
+          "title"
         ],
         "properties": {
           "id": {
@@ -6292,12 +6293,20 @@
           "horaire": {
             "type": "string",
             "default": "09:00:00"
+          },
+          "title": {
+            "type": "string"
+          },
+          "full_day": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
       "NewPauses": {
         "required": [
-          "duration"
+          "duration",
+          "title"
         ],
         "properties": {
           "Monday": {
@@ -6336,6 +6345,13 @@
           "horaire": {
             "type": "string",
             "default": "09:00:00"
+          },
+          "title": {
+            "type": "string"
+          },
+          "full_day": {
+            "type": "boolean",
+            "default": false
           },
           "created_by": {
             "type": "string"
@@ -6712,7 +6728,8 @@
             "items": {
               "required": [
                 "id",
-                "duration"
+                "duration",
+                "title"
               ],
               "properties": {
                 "id": {
@@ -6750,6 +6767,12 @@
                 },
                 "horaire": {
                   "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "full_day": {
+                  "type": "boolean"
                 },
                 "created_by": {
                   "type": "string"
@@ -6962,10 +6985,6 @@
               }
             }
           },
-          "full_day": {
-            "type": "boolean",
-            "default": false
-          },
           "product_order": {
             "type": "string"
           },
@@ -6980,6 +6999,10 @@
           "end": {
             "type": "string",
             "format": "date-time"
+          },
+          "full_day": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -6997,10 +7020,6 @@
           "reception_zone": {
             "type": "string"
           },
-          "full_day": {
-            "type": "boolean",
-            "default": false
-          },
           "product_order": {
             "type": "string"
           },
@@ -7015,6 +7034,10 @@
           "end": {
             "type": "string",
             "format": "date-time"
+          },
+          "full_day": {
+            "type": "boolean",
+            "default": false
           },
           "created_by": {
             "type": "string"

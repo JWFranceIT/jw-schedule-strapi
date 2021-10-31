@@ -758,10 +758,6 @@
               }
             }
           },
-          "full_day": {
-            "type": "boolean",
-            "default": false
-          },
           "product_order": {
             "type": "string"
           },
@@ -776,6 +772,10 @@
           "end": {
             "type": "string",
             "format": "date-time"
+          },
+          "full_day": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -793,10 +793,6 @@
           "reception_zone": {
             "type": "string"
           },
-          "full_day": {
-            "type": "boolean",
-            "default": false
-          },
           "product_order": {
             "type": "string"
           },
@@ -811,6 +807,10 @@
           "end": {
             "type": "string",
             "format": "date-time"
+          },
+          "full_day": {
+            "type": "boolean",
+            "default": false
           },
           "created_by": {
             "type": "string"
