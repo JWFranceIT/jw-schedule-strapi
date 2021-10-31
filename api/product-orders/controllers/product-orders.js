@@ -27,7 +27,6 @@ module.exports = {
             identification: wareHouseUserMatch[2],
             entity: wareHouseUserMatch[1],
           });
-    
 
     const isExist = await strapi
       .query("schedule")
@@ -37,7 +36,6 @@ module.exports = {
 
     try {
       if (regex.test(provider) && currentZone) {
-        console.log("ICI");
         ctx.send({
           provider: provider,
           id: currentProvider.id,
@@ -56,7 +54,10 @@ module.exports = {
         ctx.send({
           provider: productOrder.provider.name,
           id: productOrder.provider.id,
-          time: productOrder.entity === "FH" ? productOrder.provider.time : productOrder.provider.time2,
+          time:
+            productOrder.entity === "FH"
+              ? productOrder.provider.time
+              : productOrder.provider.time2,
           product_order: product_order,
           promise_date: productOrder.Promise_Date,
           reception_zone: currentZone.id,
@@ -67,13 +68,12 @@ module.exports = {
           isExist,
         });
       }
-      console.log({ provider });
+
       if (
         productOrder !== null &&
         productOrder?.provider.name !== provider &&
         currentZone
       ) {
-        console.log("TITI");
         throw "errorCredentials";
       }
       if (currentZone === undefined && productOrder !== null) {
@@ -84,7 +84,6 @@ module.exports = {
         currentZone === undefined &&
         productOrder === null
       ) {
-        console.log("TOTO");
         throw "errorCredentials";
       }
     } catch (error) {

@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "product_orders",
   "info": {
-    "name": "Product Orders",
+    "name": "PO",
     "description": ""
   },
   "options": {
