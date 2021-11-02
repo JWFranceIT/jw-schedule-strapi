@@ -10,7 +10,7 @@ const moment = require("moment");
 module.exports = {
   lifecycles: {
     // Called after an entry is created
-    async beforeCreate(data) {
+    async afterCreate(data) {
       const dtStart = data.DateStart ? new Date(data.DateStart) : new Date();
       const rule = new RRule({
         freq: RRule.DAILY,
@@ -59,9 +59,15 @@ module.exports = {
               : moment(entry).add(data.duration, "minutes").toDate(),
             promise_date: moment().utc().toDate(),
             full_day: data.full_day,
+            pause: data.id,
           });
         });
       });
     },
+
+    // async afterUpdate(data) {
+    //   const plannings = await strapi.query("schedule").find({ pause: data.id });
+    //   console.log({ plannings });
+    // },
   },
 };

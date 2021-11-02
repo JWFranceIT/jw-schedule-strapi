@@ -38,6 +38,10 @@
     "full_day": {
       "type": "boolean",
       "default": false
+    },
+    "pause": {
+      "model": "pauses",
+      "via": "plannings"
     }
   }
 }

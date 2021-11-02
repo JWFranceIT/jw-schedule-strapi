@@ -776,6 +776,69 @@
           "full_day": {
             "type": "boolean",
             "default": false
+          },
+          "pause": {
+            "required": [
+              "id",
+              "duration",
+              "title"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Monday": {
+                "type": "boolean"
+              },
+              "Tuesday": {
+                "type": "boolean"
+              },
+              "Wednesday": {
+                "type": "boolean"
+              },
+              "Thursday": {
+                "type": "boolean"
+              },
+              "Friday": {
+                "type": "boolean"
+              },
+              "DateStart": {
+                "type": "string"
+              },
+              "duration": {
+                "type": "integer"
+              },
+              "reception_zones": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "recurrence": {
+                "type": "integer"
+              },
+              "horaire": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "full_day": {
+                "type": "boolean"
+              },
+              "plannings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -811,6 +874,9 @@
           "full_day": {
             "type": "boolean",
             "default": false
+          },
+          "pause": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

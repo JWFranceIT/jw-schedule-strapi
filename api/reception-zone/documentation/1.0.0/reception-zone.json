@@ -605,6 +605,12 @@
                 "full_day": {
                   "type": "boolean"
                 },
+                "plannings": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },

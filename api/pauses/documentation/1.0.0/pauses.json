@@ -614,6 +614,53 @@
           "full_day": {
             "type": "boolean",
             "default": false
+          },
+          "plannings": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "product_order",
+                "promise_date",
+                "start",
+                "end"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "reception_zone": {
+                  "type": "string"
+                },
+                "product_order": {
+                  "type": "string"
+                },
+                "promise_date": {
+                  "type": "string"
+                },
+                "start": {
+                  "type": "string"
+                },
+                "end": {
+                  "type": "string"
+                },
+                "full_day": {
+                  "type": "boolean"
+                },
+                "pause": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -666,6 +713,12 @@
           "full_day": {
             "type": "boolean",
             "default": false
+          },
+          "plannings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"
