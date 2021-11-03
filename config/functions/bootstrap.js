@@ -81,7 +81,8 @@ module.exports = async () => {
     .query("reception-zone")
     .find({ _limit: -1 });
   // Comparateur pour fonction ramda differenceWith
-  const cmp = (x, y) => x.name === y.name;
+  const cmp = (x, y) => x.name.toUpperCase().trim() === y.name.toUpperCase().trim();
+  const cmp2 = (x, y) => x.vendor_reference === y.vendor_reference;
   //Compare le fichier JSON parsé aux données en DB et renvoie les zones manquantes en DB
   const diff = ramda.differenceWith(
     cmp,
@@ -103,15 +104,16 @@ module.exports = async () => {
   }
   //Récupérer les providers en DB
   const providers = await strapi.query("providers").find({ _limit: -1 });
-  
-  const test = ramda.difference(providers.map(x => ({name: x.name, vendor_reference: x.vendor_reference })), providersToSave.providers.map(x => ({name: x.name, vendor_reference: x.vendor_reference })) )
-  console.log("👽CLG - test", test)
+
+  // const test = ramda.difference(providers.map(x => ({name: x.name, vendor_reference: x.vendor_reference })), providersToSave.providers.map(x => ({name: x.name, vendor_reference: x.vendor_reference })) )
+
   //Compare le fichier JSON parsé aux données en DB et renvoie les providers manquants en DB
   const diffProviders = ramda.differenceWith(
-    cmp,
+    cmp2,
     providersToSave.providers,
     providers
   );
+  console.log({ diffProviders });
   // Récupération des zones créer précédemment
   const receptionZonesCreated = await strapi
     .query("reception-zone")
